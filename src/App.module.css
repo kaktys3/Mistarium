@@ -1,0 +1,39 @@
+.door-img {
+    width: 200px;
+}
+
+.door {
+    background: white;
+    border: 0px;
+}
+
+.swiper {
+  background-image: url('/src/img/bacgroun-form.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#swiper {
+  position: absolute;
+  top: 0px;
+}
+
+
+.swiper-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+#slide {
+  height: auto;
+}
+
+#slide > div {
+  height: 100%;
+}
+

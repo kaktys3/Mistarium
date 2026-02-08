@@ -1,0 +1,53 @@
+html, body, 
+*, 
+*:hover, 
+*:focus, 
+*:active {
+  cursor: url('./src/img/cursor.png'), auto !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0 1000px #f4ecd8 inset;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+@font-face {
+  font-family: 'Agatha';
+  src: url('./src/fonts/Agatha.eot');
+  src: url('/src/fonts/Agatha.eot') format('embedded-opentype'),
+    url('/src/fonts/Agatha.woff2') format('woff2'),
+    url('/src/fonts/Agatha.woff') format('woff'),
+    url('/src/fonts/Agatha.ttf') format('truetype'),
+    url('/src/images/Agatha.svg#Agatha') format('svg');
+}
+
+@font-face {
+  font-family: 'Russia_bold';
+  src: url('/src/fonts/Russia_bold.eot');
+  src: url('/src/fonts/Russia_bold.eot') format('embedded-opentype'),
+    url('/src/fonts/Russia_bold.woff2') format('woff2'),
+    url('/src/fonts/Russia_bold.woff') format('woff'),
+    url('/src/fonts/Russia_bold.ttf') format('truetype'),
+    url('/src/images/Russia_bold.svg#Russia_bold') format('svg');
+}
+
+body { margin: 0px;}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  min-height: 100%;
+}
+
+input,
+label,
+button,
+input::placeholder {    font-family: 'Agatha';}

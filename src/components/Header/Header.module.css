@@ -1,0 +1,297 @@
+header {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.background {
+        overflow: hidden;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 608px;
+    background:
+        radial-gradient(circle at center,
+            rgba(20, 20, 25, 0.9),
+            rgba(5, 5, 8, 1) 70%),
+        linear-gradient(to bottom,
+            #000000,
+            #050508);
+}
+
+h1 {
+    color: gold;
+    font-size: 2em;
+    margin: 0px;
+}
+
+.doors-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+@keyframes pulseGold {
+    0% {
+        box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.9);
+        transform: translateY(0);
+    }
+
+    50% {
+        box-shadow: 0 0 35px 15px rgba(212, 175, 55, 1);
+        transform: translateY(-6px);
+    }
+
+    100% {
+        box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.9);
+        transform: translateY(0);
+    }
+}
+
+.sun {
+    background-color: #d4af37;
+    animation-duration: 3.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-name: pulseGold;
+}
+
+@keyframes pulseBlood {
+    0% {
+        box-shadow: 0 0 18px 6px rgba(138, 3, 3, 0.9);
+        transform: translateY(0);
+    }
+
+    50% {
+        box-shadow: 0 0 40px 18px rgba(138, 3, 3, 1);
+        transform: translateY(-15px);
+    }
+
+    100% {
+        box-shadow: 0 0 18px 6px rgba(138, 3, 3, 0.9);
+        transform: translateY(0);
+    }
+}
+
+.saturn {
+    background-color: #8a0303;
+    animation-name: pulseBlood;
+    animation-duration: 3.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes pulseBlue {
+    0% {
+        box-shadow: 0 0 16px 6px rgba(0, 80, 200, 0.9);
+        transform: translateY(0);
+    }
+
+    50% {
+        box-shadow: 0 0 38px 16px rgba(0, 80, 200, 1);
+        transform: translateY(-8px);
+    }
+
+    100% {
+        box-shadow: 0 0 16px 6px rgba(0, 80, 200, 0.9);
+        transform: translateY(0);
+    }
+}
+
+.moon {
+    background-color: #0050c8;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-name: pulseBlue;
+}
+
+.door {
+    width: 18%;
+    height: 30%;
+}
+
+.transition-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    pointer-events: none;
+    z-index: 3;
+}
+
+@keyframes onceGold {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+}
+
+.fill-gold {
+    color: #d4af37;
+    animation-name: onceGold;
+}
+
+@keyframes onceBlood {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+}
+
+.fill-blood {
+    color: #8a0303;
+    animation-name: onceBlood;
+}
+
+@keyframes onceBlue {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+}
+
+.fill-blue {
+    color: #0050c8;
+    animation-name: onceBlue;
+}
+
+
+@keyframes dissolve {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+        filter: blur(6px);
+        visibility: hidden;
+    }
+}
+
+.clouse-header {
+    animation: dissolve 2s ease-in-out forwards;
+}
+
+
+.section-none {
+    display: block;
+    animation: hideSection 6s ease-in-out forwards;
+}
+
+@keyframes hideSection {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    50% {
+        /* 3 секунди */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        /* 6 секунд */
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.section-block {
+    animation: blockSection 3s ease-in-out forwards;
+}
+
+@keyframes blockSection {
+    0% {
+        display: block;
+        opacity: 0;
+            visibility: visible;
+    }
+
+    50% {
+        opacity: 0;
+        visibility: visible;
+    }
+
+    100% {
+      
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.opasity-header {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+@media(max-height: 600px) {
+    header {
+        padding: 20px 0px;
+    }
+}
+
+@media (max-width: 560px) {
+    h1{
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 420px) {
+    h1{
+        font-size: 1em;
+    }
+
+    header{
+        gap: 30px;
+    }
+}
