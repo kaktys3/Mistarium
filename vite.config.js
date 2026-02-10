@@ -12,7 +12,7 @@ export default defineConfig({
   ],
 
   // 👇 ВАЖЛИВО ДЛЯ GITHUB PAGES
-  base: '/Mistarium2/',   // ТОЧНО назва репозиторію
+  base: '/Mistarium/',
   build: {
     outDir: 'docs',       // замість dist
   },
