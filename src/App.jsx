@@ -14,25 +14,33 @@ function App() {
     return saved
       ? JSON.parse(saved)
       : {
-        userInfo: {},
-        sotialNetvorks: {},
-        planet: ''
-      };
+          userInfo: {},
+          sotialNetvorks: {},
+          planet: ''
+        };
   });
+  const [isForm, setForm] = useState(false)
 
-  const [isOpacity, setIsOpacity] = useState(false);
   const swiperRef = useRef(null);
+  const targetRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(infoForm));
   }, [infoForm]);
 
-  if(isOpacity === true) {
-  localStorage.setItem('doors', 'false')
-  }
 
-  console.log(localStorage.getItem('doors'))
-  console.log(infoForm)
+  useEffect(() => {
+    if (!infoForm.planet) return;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        targetRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      });
+    });
+  }, [infoForm.planet]);
 
   return (
     <>
@@ -43,20 +51,19 @@ function App() {
             planet
           }));
         }}
-        isOpacity={isOpacity}
-        setIsOpacity={setIsOpacity}
+        setForm={setForm}
       />
 
       {infoForm.planet && (
         <Swiper
           className={app.swiper}
-          id={app.swiper}
           slidesPerView={1}
           allowTouchMove={false}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
+          style={isForm === false ? {display: 'none'} : {display: 'block'}}
         >
-          <SwiperSlide id={app.slide}>
-            <div>
+          <SwiperSlide>
+            <div ref={targetRef}>
               <FamilyForm
                 onNext={() => swiperRef.current.slideNext()}
                 onSubmit={(userData) =>
@@ -65,12 +72,11 @@ function App() {
                     userInfo: userData
                   }))
                 }
-                setIsOpacity={setIsOpacity}
               />
             </div>
           </SwiperSlide>
 
-          <SwiperSlide className={app.slide} id={app.slide}>
+          <SwiperSlide>
             <SocialNetworks
               onBack={() => swiperRef.current.slidePrev()}
               onSubmit={(userData) =>

@@ -3,37 +3,41 @@ import header from './Header.module.css';
 import moonDoor from '/src/img/moon-door.png';
 import saturnDoor from '/src/img/saturn-door.png';
 import sunDoor from '/src/img/sun-door.png';
-import logo from '/src/img/logo.png'
+import logo from '/src/img/logo.png';
 import { LuCircle } from "react-icons/lu";
 
 export default class Header extends Component {
     state = {
         selected: null,
-        closed: false,
-        backgroundClosed: false,
-        hidden: false,
     };
 
     componentDidMount() {
-        if (localStorage.getItem('doors') === 'true') {
-            this.setState({ hidden: true });
+         const { autoScrol,setForm } = this.props;
+        const isFormBlock = localStorage.getItem('isForms')
+        const isFormData = JSON.parse(isFormBlock)
+
+        if(isFormData === true) {
+            setForm(true)
+            autoScrol?.();
         }
     }
 
     handleClick = (elem) => {
-        const { onSubmit, setIsOpacity } = this.props;
+        const { onSubmit, autoScrol, setForm } = this.props;
 
-        onSubmit(elem);
-        localStorage.setItem('doors', 'true');
-
-        this.setState({
-            selected: elem,
-            closed: true,
-            backgroundClosed: true,
+        this.setState({ selected: null }, () => {
+            requestAnimationFrame(() => {
+                this.setState({ selected: elem });
+                setForm(true)
+                setTimeout(() => {
+                    onSubmit(elem);
+                    autoScrol?.();
+                    localStorage.setItem('isForms', 'true')
+                }, 6000)
+            });
         });
-
-        setIsOpacity(false);
     };
+
 
     getTransitionClass() {
         const { selected } = this.state;
@@ -51,16 +55,12 @@ export default class Header extends Component {
     }
 
     render() {
-        console.log(localStorage.getItem('doors'))
-        const { hidden, closed, backgroundClosed } = this.state;
         const { isOpacity } = this.props;
 
         return (
             <div
                 className={`
                     ${header.background}
-                    ${backgroundClosed ? header['section-none'] : ''}
-                    ${hidden ? header['opasity-header'] : ''}
                     ${isOpacity ? header['section-block'] : ''}
                 `}
             >
@@ -82,8 +82,6 @@ export default class Header extends Component {
 
                 <header
                     className={`
-                        ${closed ? header['clouse-header'] : ''}
-                        ${hidden ? header['opasity-header'] : ''}
                         ${isOpacity ? header['section-block'] : ''}
                     `}
                 >
@@ -94,7 +92,7 @@ export default class Header extends Component {
                             src={moonDoor}
                             alt="Moon door"
                             className={`${header.door} ${header.moon}`}
-                            onClick={() => this.handleClick('moon')}
+                            onClick={() => { this.handleClick('moon') }}
                         />
 
                         <img

@@ -10,11 +10,7 @@ header {
 }
 
 .background {
-        overflow: hidden;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    min-height: 608px;
+    overflow: hidden;
     background:
         radial-gradient(circle at center,
             rgba(20, 20, 25, 0.9),
@@ -22,6 +18,8 @@ header {
         linear-gradient(to bottom,
             #000000,
             #050508);
+            /* background-image: url(/src/img/background-option.png);
+            background-size: 100% 100%; */
 }
 
 h1 {
@@ -168,11 +166,11 @@ h1 {
 
 .fill-blue {
     stroke: blue;
-    animation-name: onceBlood;  
+    animation-name: onceBlood;
 }
 
 
-@keyframes dissolve {
+/* @keyframes dissolve {
     0% {
         opacity: 1;
         transform: scale(1);
@@ -190,7 +188,7 @@ h1 {
 
 .clouse-header {
     animation: dissolve 2s ease-in-out forwards;
-}
+} */
 
 
 .section-none {
@@ -225,7 +223,7 @@ h1 {
     0% {
         display: block;
         opacity: 0;
-            visibility: visible;
+        visibility: visible;
     }
 
     50% {
@@ -234,7 +232,7 @@ h1 {
     }
 
     100% {
-      
+
         opacity: 1;
         visibility: visible;
     }
@@ -253,17 +251,17 @@ h1 {
 }
 
 @media (max-width: 560px) {
-    h1{
+    h1 {
         font-size: 1.5em;
     }
 }
 
 @media (max-width: 420px) {
-    h1{
+    h1 {
         font-size: 1em;
     }
 
-    header{
+    header {
         gap: 30px;
     }
 }

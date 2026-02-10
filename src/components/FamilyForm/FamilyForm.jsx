@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import fm from './FamilyForm.module.css';
-import { GiMagicShield } from "react-icons/gi";
 
 
 export default class FamilyForm extends Component {
@@ -45,12 +44,10 @@ export default class FamilyForm extends Component {
 
   render() {
     const { name, motherName, birthday } = this.state.formData;
-    const { setIsOpacity } = this.props
 
     return (
       <section className={fm['family-form']}>
         <form className={fm.form} onSubmit={this.handleSubmit}>
-          <GiMagicShield className={fm['doors-symbol']} onClick={() => setIsOpacity(true)} />
           <label>
             Твое имя — это твой Успех. Впиши его
             <input

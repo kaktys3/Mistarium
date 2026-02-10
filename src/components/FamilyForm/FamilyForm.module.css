@@ -77,16 +77,6 @@ input::placeholder {
   text-align: center;
 }
 
-.doors-symbol {
-  width: 30px;
-  height: 30px;
-}
-
-.doors-symbol:hover {
-  transform: translateY(-1px);
-  color: #FFD700;
-}
-
 @media (max-width: 630px) {
   input::placeholder {
     font-size: 18px;

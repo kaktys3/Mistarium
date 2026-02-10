@@ -16,11 +16,10 @@
   margin: 0 auto;
 }
 
-#swiper {
-  position: absolute;
-  top: 0px;
+.swiper > div {
+  display: flex;
+  align-items: center;
 }
-
 
 .swiper-content {
   display: flex;
